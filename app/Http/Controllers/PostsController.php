@@ -33,7 +33,8 @@ public function getIndex()
       $query->where('kind', 'like', '%'.$kind.'%');
   }
   $posts = $query
-      ->get();
+      ->orderBy('id','arc')
+      ->paginate(10);
 
   return view('post.index', compact('posts', 'ramen_name', 'address','kind' ));
 }
@@ -47,14 +48,10 @@ public function getIndex()
     // 投稿
       public function getAdd()
     {
+
       return view('post.add');
     }
 
-    /**
-    * 完了画面
-    *
-    * @return string
-    */
 
       public function postAdd()
       {
@@ -63,6 +60,11 @@ public function getIndex()
         $this->post->save();
         return redirect()->to('post');
       }
+
+    public function store(PostsRequest $request)
+    {
+
+    }
 
 
 }

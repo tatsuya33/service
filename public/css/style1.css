@@ -1,27 +1,27 @@
-body{background: rgb(238, 167, 7);
-
-  margin-left: 300px;
-  margin-right: 300px;
-}
-
-body:before{
-  width: 240px;
-   height: 500%;
-   content: "";
-   position: absolute;
-   top: 0;
-   left: 0px;
-   background:rgb(225, 227, 238); //右側の背景
+html{background-image:url("./rame.jpg");
 
 }
 
-body::after{
-  width: 240px;
-   height: 500%;
-   content: "";
-   position: absolute;
-   top: 0;
-   right: 0px;
-   background:rgb(225, 227, 238); //左側の背景
+
+body{
+    background-color:rgba(238,255,238,0.95);
+    margin-top: 30px;
+    margin-bottom:30px;
 
 }
+
+hr{
+    border-color: #e0a800;
+
+}
+
+div.hh{
+    position:absolute;
+    top: 70px;
+    right: 400px;
+
+}
+
+
+
+
