@@ -25,7 +25,15 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/post';
+
+    public function logout()
+{
+    $this->guard()->logout();
+
+
+    return redirect('/post');
+}
 
     /**
      * Create a new controller instance.

@@ -21,3 +21,14 @@ Route::get('/post/detail/{id}', 'PostsController@getDetail');
 // 追加
 Route::get('/post/add', 'PostsController@getAdd');
 Route::post('/post/add', 'PostsController@postAdd');
+//会員登録
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//コメント
+Route::post('/posts/{post}/comments', 'CommentsController@store');

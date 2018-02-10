@@ -61,7 +61,7 @@ public function getIndex()
         return redirect()->to('post');
       }
 
-    public function store(PostsRequest $request)
+    public function store(PostsRequest $request )
     {
 
     }

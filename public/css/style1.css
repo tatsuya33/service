@@ -17,11 +17,12 @@ hr{
 
 div.hh{
     position:absolute;
-    top: 70px;
-    right: 400px;
+    top: 100px;
+    right: 370px;
 
 }
 
-
-
-
+div.ichi{
+    position: absolute;
+    top:10px;
+}

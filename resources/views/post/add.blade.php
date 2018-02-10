@@ -47,5 +47,6 @@
     </div>
 {!! Form::close() !!}
  </div>
+ 
 </body>
 </html>
