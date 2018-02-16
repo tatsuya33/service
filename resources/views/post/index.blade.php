@@ -5,7 +5,7 @@
 <title>ラーメン</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="../../css/style1.css">
 </head>
 <body class="">
 <nav class="navbar navbar-inverse ">
@@ -82,7 +82,6 @@
     <div class="container">
               <div class="h2 pull-right">投稿日：{{ date("Y年 m月 d日",strtotime($post->created_at)) }}</div>
     <div class="h2 bg-warning">ラーメン屋の名前：：{{{ $post->ramen_name}}} </div>
-    <div class="h4">住所：：{{{ $post->address }}}</div>
     <div class="h4">ラーメンの種類：：{{{ $post->kind }}}</div>
       <div class="h4">値段：：{{{ $post->price }}}円</div>
         <div class="h4 pull-right"><a href="/post/detail/{{{ $post->id }}}">詳細</a></div>

@@ -5,15 +5,53 @@
 <title>詳細</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <script type="text/javascript" src="../../assets/js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript" src="../../assets/js/Gmaps.js"></script>
+  <script type="text/javascript">
+    // コントローラから渡された住所を取得
+    var addressStr = "{!!$post->address !!}";
+
+    $(document).ready(function(){
+        // Gmapsを利用してマップを生成
+        var map = new GMaps({
+            div: '#map',
+            lat: -12.043333,
+            lng: -77.028333
+        });
+
+        // 住所からマップを表示
+        GMaps.geocode({
+            address: addressStr.trim(),
+            callback: function(results, status) {
+                if (status == 'OK') {
+                    var latlng = results[0].geometry.location;
+                    map.setCenter(latlng.lat(), latlng.lng());
+                    map.addMarker({
+                        lat: latlng.lat(),
+                        lng: latlng.lng()
+                    });
+                }
+            }
+        });
+    });
+  </script>
+  <style>
+    @charset "utf-8";
+    #map {
+      height: 300px;
+      width: 300px;
+    }
+  </style>
 </head>
-<body class=" bg-warning">
-  <nav class="navbar  navbartop">
+<body class=" ">
+  <nav class="navbar navbar-inverse ">
     <ul class="nav navbar-nav navbar-left">
         <li><h1 class="h1 ">関東のラーメン屋 投稿フォーム</h1></li>
       </ul>
                         <!-- Right Side Of Navbar -->
-                        <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav  pull-right">
                             <!-- Authentication Links -->
                             @guest
                                 <li class="h4"><a href="{{ route('login') }}">ログイン</a></li>
@@ -53,13 +91,18 @@
 <br>
 <br>
 <div class="col-md-6 col-md-offset-3 container" >
-    <div class="h3">ラーメン屋の名前：：{{{ $post->ramen_name}}}</div>
-    <div class="h3">住所：：{{{ $post->address }}}</div>
+
+      <div class="h3">投稿日：：{{ date("Y年 m月 d日 ",strtotime($post->created_at)) }}</div>
+    <div class="h3 bg-warning">ラーメン屋の名前：：{{{ $post->ramen_name}}}</div>
     <div class="h3">ラーメンの種類：：{{{ $post->kind }}}</div>
     <div class="h3">値段：：{{{ $post->price }}}円</div>
     <div class="h3">コメント：：{{{ $post->comment }}}</div>
-    <div class="h3">投稿日：：{{ date("Y年 m月 d日 H時i分s秒",strtotime($post->created_at)) }}</div>
 </div>
+<div class="">
+<div class="h4">住所：：{{{ $post->address }}}</div>
+<div id="map"></div>
+</div>
+
 
     @if(Auth::check())
       <hr>

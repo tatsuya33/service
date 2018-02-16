@@ -32,3 +32,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //コメント
 Route::post('/posts/{post}/comments', 'CommentsController@store');
+
+// 【追加部分】「Google Map 画面表示機能」を起動
+//Route::get('/post/ditail/[id]', 'GmapsController@view');
+
+Route::get('/map/[id]', 'GmapsController@view');
