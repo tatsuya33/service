@@ -85,6 +85,7 @@
     <div class="h4">ラーメンの種類：：{{{ $post->kind }}}</div>
       <div class="h4">値段：：{{{ $post->price }}}円</div>
         <div class="h4 pull-right"><a href="/post/detail/{{{ $post->id }}}">詳細</a></div>
+        <div class="pull-right"><a href="/post/delete/{{{ $post->id }}}">削除</a></div>
         <div class="h4">コメント：：{{{ $post->comment }}}</div>
 <hr>
 

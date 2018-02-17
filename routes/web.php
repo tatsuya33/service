@@ -21,6 +21,9 @@ Route::get('/post/detail/{id}', 'PostsController@getDetail');
 // 追加
 Route::get('/post/add', 'PostsController@getAdd');
 Route::post('/post/add', 'PostsController@postAdd');
+//削除
+Route::get('/post/delete/{id}', 'PostsController@getDelete');
+
 //会員登録
 Auth::routes();
 

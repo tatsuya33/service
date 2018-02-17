@@ -36,7 +36,7 @@ public function getIndex()
       ->orderBy('id','arc')
       ->paginate(10);
 
-  return view('post.index', compact('posts', 'ramen_name', 'address','kind' ));
+  return responce()->json($fillable);
 }
 
     // 詳細
@@ -60,6 +60,14 @@ public function getIndex()
         $this->post->save();
         return redirect()->to('post');
       }
+
+      public function getDelete($id)
+{
+    $post = $this->pos->find($id);
+    $post->delete();
+    return redirect()->to('post');
+}
+
 
     public function store(PostsRequest $request )
     {
