@@ -36,7 +36,7 @@ public function getIndex()
       ->orderBy('id','arc')
       ->paginate(10);
 
-  return responce()->json($fillable);
+  return view('post.index', compact('posts', 'ramen_name', 'address','kind' ));
 }
 
     // 詳細
