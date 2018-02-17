@@ -63,7 +63,7 @@ public function getIndex()
 
       public function getDelete($id)
 {
-    $post = $this->pos->find($id);
+    $post = $this->post->find($id);
     $post->delete();
     return redirect()->to('post');
 }
