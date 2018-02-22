@@ -23,6 +23,10 @@ Route::get('/post/add', 'PostsController@getAdd');
 Route::post('/post/add', 'PostsController@postAdd');
 //削除
 Route::get('/post/delete/{id}', 'PostsController@getDelete');
+// 編集
+Route::get('/post/edit/{id}', 'PostsController@getEdit');
+Route::post('/post/edit/{id}', 'PostsController@postEdit');
+
 
 //会員登録
 Auth::routes();

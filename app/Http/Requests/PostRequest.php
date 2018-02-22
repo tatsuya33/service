@@ -24,10 +24,10 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-          'ramen_name' => 'required|max:100',
-          'addres' => 'required|max:100',
-          'kind' => 'required|max:50',
-          'price' => 'required|max:10',
+          'ramen_name' => 'required',
+          'address' => 'required',
+          'kind' => 'required',
+          'price' => 'required',
           'comment' => 'required|max:500'
         ];
     }
@@ -35,8 +35,7 @@ class PostRequest extends FormRequest
 {
     return [
         'ramen_name.required' => 'ラーメン屋の名前を入力してください',
-        'addres.required' => '住所を入力してください',
-        'addres.max' => '住所は指定文字数以内で入力してください',
+        'address.required' => '住所を入力してください',
         'kind.required' => '種類を記入してください',
         'price.required' => '値段を記入してください',
         'comment.required' => 'コメントを記入してください',

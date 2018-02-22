@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
   <link rel="stylesheet" href="../../css/style.css">
   <script type="text/javascript" src="../../assets/js/jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCJ2zO2QRmYjOzj0ekvpA_dnwLkL78Q7MM"></script>
   <script type="text/javascript" src="../../assets/js/Gmaps.js"></script>
   <script type="text/javascript">
     // コントローラから渡された住所を取得
@@ -103,6 +103,16 @@
 <div id="map"></div>
 </div>
 
+@can('update', $post)
+<a href="/post/{{ $post->id }}/edit" class="btn btn-primary">
+<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 編集
+</a>
+@endcan
+@can('delete', $post)
+<button class="btn btn-danger" data-toggle="model" data-target="#exampleModel" data-whatever="/post/delete/{{ $post->id }}">
+    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 削除
+</button>
+@endcan
 
     @if(Auth::check())
       <hr>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Post;
 use DB;
 use Request;
+use App\Http\Requests\PostRequest;
+use App\Http\Requests\EditRequest;
 
 class PostsController extends Controller
 {
@@ -37,6 +39,7 @@ public function getIndex()
       ->paginate(10);
 
   return view('post.index', compact('posts', 'ramen_name', 'address','kind' ));
+
 }
 
     // 詳細
@@ -53,7 +56,7 @@ public function getIndex()
     }
 
 
-      public function postAdd()
+      public function postAdd(PostRequest $request)
       {
         $data = Request::all();
         $this->post->fill($data);
@@ -66,13 +69,22 @@ public function getIndex()
     $post = $this->post->find($id);
     $post->delete();
     return redirect()->to('post');
-}
+  }
 
+  // 編集
+  public function getEdit($id)
+  {
+      $post = $this->post->find($id);
+      return view('post.edit', compact('post'));
+  }
 
-    public function store(PostsRequest $request )
-    {
-
-    }
-
+  public function postEdit($id, EditRequest $request)
+  {
+      $post = $this->post->find($id);
+      $data = Request::all();
+      $post->fill($data);
+      $post->save();
+      return redirect()->to('post');
+  }
 
 }

@@ -85,8 +85,23 @@
     <div class="h4">ラーメンの種類：：{{{ $post->kind }}}</div>
       <div class="h4">値段：：{{{ $post->price }}}円</div>
         <div class="h4 pull-right"><a href="/post/detail/{{{ $post->id }}}">詳細</a></div>
+
         <div class="pull-right"><a href="/post/delete/{{{ $post->id }}}">削除</a></div>
+        <div><a href="/post/edit/{{{ $post->id }}}">編集</a></div>
+
         <div class="h4">コメント：：{{{ $post->comment }}}</div>
+
+        @can('update', $post)
+        <a href="/post/{{ $post->id }}/edit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 編集
+        </a>
+        @endcan
+        @can('delete', $post)
+        <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="/post/{{ $post->id }}">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 削除
+        </button>
+        @endcan
+
 <hr>
 
 </div>

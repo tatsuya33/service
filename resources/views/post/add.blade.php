@@ -42,11 +42,12 @@
         {!! Form::label('comment', 'コメント(500文字まで入力可能)') !!}
         {{ Form::textarea('comment',null,['class' => 'form-control', 'rows' => 6 ,'maxlength' =>'500']) }}<br>
     </div>
+
     <div >
         {!! Form::submit('登録', ['class' => 'btn btn-lg btn-danger']) !!}
     </div>
 {!! Form::close() !!}
  </div>
- 
+
 </body>
 </html>
